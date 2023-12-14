@@ -59,7 +59,7 @@ botaoAdicionar.addEventListener('click', () => {
     }
 
     if (nomeItem.value == "" || quantidadeItem.value == "") {
-        window.alert('valor invalido')
+        window.alert('Verifique se todos os valores foram inseridos')
     } else {
         espaçoItens.innerHTML += `
         <li class="item-cadastrado">
@@ -97,7 +97,7 @@ function excluir(obj) {
 
 function editar(obj) {
 
-    containerCadastro.classList.toggle('sumir');
+    containerCadastro.classList.remove('sumir');
     botaoSalvar.classList.remove('sumir');
 
     for (let a = 0; a < itens.length; a += 1) {
@@ -108,7 +108,9 @@ function editar(obj) {
                     itens[a].quantidade = quantidadeItem.value;
                     localStorage.setItem('itens', JSON.stringify(itens));
                     listar();
-                    containerCadastro.classList.toggle('sumir');
+                    containerCadastro.classList.add('sumir');
+                }else{
+                    window.alert('Verifique se todos os valores foram inseridos');
                 }
             })
         }
